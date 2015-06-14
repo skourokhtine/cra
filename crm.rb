@@ -1,6 +1,17 @@
+require_relative "rolodex.rb"
+#require_relative allows me to connect a 1 or multiple files to the one in action. In this case crm.rb
+
 class CRM
+
+def self.run(name)
+  my_crm = CRM.new(name)
+  my_crm.user_menu
+end
+
   def initialize(name)
     @name = name 
+    @rolodex = Rolodex.new
+   end 
     #@ symbol assisigns the local variable into an instance variable
 
 
@@ -35,15 +46,11 @@ def user_menu
 
   while true
   #this allows me to set a direction for this method  
-    print_main_menu
+  print_main_menu
     
-    print "Select an option: "
-    input = gets.chomp.to_i
-    
-  # return if input == 6
-  
+  print "Select an option: "
+  input = gets.chomp.to_i
   chose_option(input)
-    
   end
 end
 
@@ -61,12 +68,23 @@ end
 
     print "Notes: "
     notes = gets.chomp
-    end
+
+    @rolodex.add_contact(first_name, last_name, email, notes)
   end
+  
+    def edit_contact
+      puts "Please edit the contact"
+    end
+
+    def display_contacts
+      @rolodex.all.each do |contact|
+        puts "#{contact.first_name} #{contact.last_name}"
+    end 
+  end 
 end
 
-crm_app = CRM.new("Serguei's CRM App")
-crm_app.user_menu
+CRM.run("Serguei's CRM App")
+
 
 
 
