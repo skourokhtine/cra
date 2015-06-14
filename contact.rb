@@ -8,7 +8,7 @@ attr_reader :id
 	@first_name = first_name.capitalize
 	@last_name = last_name.capitalize
 	@email = email.downcase
-	@notes = notes
+	@notes = notes.capitalize
 	end
 
 		def full_name
@@ -16,4 +16,5 @@ attr_reader :id
 		end
 
 end
+
 
