@@ -1,6 +1,5 @@
-
 class Contact
-attr_accessor :first_name; :last_name; :email; :notes
+attr_accessor :first_name, :last_name, :email, :notes
 attr_reader :id
 
 	def initialize(id, first_name, last_name, email, notes)
